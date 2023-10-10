@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import re 
 
 class MyString:
     def __init__(self, value=''):
@@ -23,7 +24,11 @@ class MyString:
             return False
     
     def count_sentences(self):
-        pass
+        pattern = re.compile(r'[\.\?\!]')
+        match = pattern.split(self.value)
+        while "" in match:
+            match.remove("")
+        return len(match)
   
     def get_value(self):
         return self._value
